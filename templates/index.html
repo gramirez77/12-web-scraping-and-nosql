@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mission to Mars</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="jumbotron text-center">
+                <h1>Mission to Mars</h1>
+                <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 px-3">
+                <h1 class="display-4">Latest Mars News</h1>
+                <h4>{{ mars_data['NASA Mars News']['news_title'] }} ({{ mars_data['NASA Mars News']['news_date'] }})</h4>
+                <p>{{ mars_data['NASA Mars News']['news_p'] }}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 px-3">
+                <h1 class="display-4">Featured Mars Image</h1>
+                <img src="{{ mars_data['JPL Mars Space Featured Image']['featured_image_url'] }}" width="100%">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 px-3">
+                <h1 class="display-4">Current Weather on Mars</h1>
+                <p>{{ mars_data['Mars Weather']['mars_weather'] }}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 px-3">
+                <h1 class="display-4">Mars Facts</h1>
+                {{ mars_data['Mars Facts']['mars_facts_html_table']|safe }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 px-3">
+                <h1 class="display-4">Mars Hemispheres</h1>
+            </div>
+        </div>
+        <div class="row">
+            {% for image in mars_data["Mars Hemispheres Images"] %}
+            <div class="col-md-6 px-3">
+                <img src="{{ image["img_url"] }}" width="100%">
+                <h4 align="center">{{ image["title"] }}</h4>
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+</body>
+
+</html>
