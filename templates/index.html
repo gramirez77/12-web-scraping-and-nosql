@@ -17,6 +17,7 @@
                 <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
             </div>
         </div>
+        {% if mars_data %}
         <div class="row">
             <div class="col-md-12 px-3">
                 <h1 class="display-4">Latest Mars News</h1>
@@ -55,7 +56,7 @@
             </div>
             {% endfor %}
         </div>
-
+        {% endif %}
     </div>
 </body>
 
